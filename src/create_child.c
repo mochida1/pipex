@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   create_child.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmochida <hmochida@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/12 02:40:02 by hmochida          #+#    #+#             */
-/*   Updated: 2022/05/12 17:50:16 by hmochida         ###   ########.fr       */
+/*   Created: 2022/05/12 18:02:06 by hmochida          #+#    #+#             */
+/*   Updated: 2022/05/12 18:09:47 by hmochida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <unistd.h> // pipe(), exceve(), dup(), dup2(), access(), fork(), unlink()
-# include <fcntl.h> // open(), close(),
-# include <stdlib.h> //malloc(), free(), exit(),
-# include <stdio.h> // perror()
-# include <string.h> // strerror()
-# include <sys/wait.h> //wait(), waitpid(),
+#include "../includes/pipex.h"
 
+//creates a child from fork. Returns child PID. If fork fails, exits with EXIT_FAILURE
+pid_t	create_child(void)
+{
+	pid_t child_pid;
 
-# include "../includes/defines.h"
-
-int	create_pipe(int pipe_fd[2]);
-
+	child_pid = fork();
+	if (child_pid < 0)
+	{
+		perror("child");
+		exit(EXIT_FAILURE);
+	}
+	return (child_pid);
+}
