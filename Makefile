@@ -12,6 +12,8 @@ INCLUDES = -Iincludes
 
 # Lists sources. Manually because of norm...
 SRC_LIST = pipex.c \
+create_child.c \
+create_pipe.c \
 
 # Names sources
 SOURCES = $(addprefix $(SOURCEDIR)/,$(SRC_LIST))

@@ -6,7 +6,7 @@
 /*   By: hmochida <hmochida@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 02:40:02 by hmochida          #+#    #+#             */
-/*   Updated: 2022/05/12 17:50:16 by hmochida         ###   ########.fr       */
+/*   Updated: 2022/05/12 18:21:05 by hmochida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,5 @@
 
 # include "../includes/defines.h"
 
-int	create_pipe(int pipe_fd[2]);
-
+int		create_pipe(int pipe_fd[2]);
+pid_t	create_child(void);

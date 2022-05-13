@@ -3,3 +3,6 @@ batata
 couve
 diamante
 "!   '!"
+
+pipe do capiroto
+cat -E INFILE | tr " \'" '\"'
