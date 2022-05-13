@@ -6,7 +6,7 @@
 /*   By: hmochida <hmochida@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 02:40:02 by hmochida          #+#    #+#             */
-/*   Updated: 2022/05/12 18:21:05 by hmochida         ###   ########.fr       */
+/*   Updated: 2022/05/13 19:09:06 by hmochida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@
 # include <sys/wait.h> //wait(), waitpid(),
 
 
+
 # include "../includes/defines.h"
 
 int		create_pipe(int pipe_fd[2]);
 pid_t	create_child(void);
+void	exec_cmd1(char **args1, char *envp[]);

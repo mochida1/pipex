@@ -14,6 +14,7 @@ INCLUDES = -Iincludes
 SRC_LIST = pipex.c \
 create_child.c \
 create_pipe.c \
+exec_cmdx.c \
 
 # Names sources
 SOURCES = $(addprefix $(SOURCEDIR)/,$(SRC_LIST))
@@ -52,6 +53,7 @@ bonus:
 
 # from here on shit ain't mandatory or bonus
 run:
+	./$(NAME)
 
 git: fclean
 	git add -A

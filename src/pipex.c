@@ -6,18 +6,18 @@
 /*   By: hmochida <hmochida@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 02:40:10 by hmochida          #+#    #+#             */
-/*   Updated: 2022/05/13 18:20:41 by hmochida         ###   ########.fr       */
+/*   Updated: 2022/05/13 19:10:46 by hmochida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../includes/pipex.h"
 
-int main (int argc, char *argv[])
+int main (int argc, char *argv[], char *envp[])
 {
 	t_data *data;
 	data = malloc (sizeof(t_data));
 	char *args1[3] = {"ls", "-la", NULL}; //DELETAR execve("/bin/usr/ls", {"ls", "-la", NULL}, envp)
-	char *args2[3] = {"grep", "file", NULL};
+	//char *args2[3] = {"grep", "file", NULL};
 
 //esse bloco printa todos os argumentos.
 	int i = 0;
@@ -32,7 +32,7 @@ int main (int argc, char *argv[])
 	if (!data->child_pid[0])
 	{
 	/* 	código para o child1 */
-		//executa_execve_do_filho1(comando_do_execve);
+		exec_cmd1(args1, envp);
 		printf ("data->child_pid[0] = %d ;\n", data->child_pid[0]);
 		printf ("this is child 1\n");
 		exit(UTIL_NOT_FOUND); //if command is not found, gtfo of the forked process.
@@ -43,12 +43,12 @@ int main (int argc, char *argv[])
 	data->child_pid[1] = create_child();
 	if (!data->child_pid[1])
 	{
-	/* 	código para o child1 */
+	/* 	código para o child2 */
 		printf ("data->child_pid[1] = %d ;\n", data->child_pid[1]);
 		printf ("this is child 2\n");
 		exit(UTIL_NOT_FOUND); //if command is not found, gtfo of the forked process.
 	}
-	waitpid(data->child_pid[1], &data->status, 0); // wait for 2nd child shit to be complete.
+	//waitpid(data->child_pid[1], &data->status, 0); // wait for 2nd child shit to be complete.
 
 	close(data->pipe_fd[0]);
 	close(data->pipe_fd[1]); // certifies all FD's are closed before finishing the program.
