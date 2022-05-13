@@ -6,7 +6,7 @@
 /*   By: hmochida <hmochida@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 02:40:10 by hmochida          #+#    #+#             */
-/*   Updated: 2022/05/13 17:31:01 by hmochida         ###   ########.fr       */
+/*   Updated: 2022/05/13 18:20:41 by hmochida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int main (int argc, char *argv[])
 {
 	t_data *data;
 	data = malloc (sizeof(t_data));
+	char *args1[3] = {"ls", "-la", NULL}; //DELETAR execve("/bin/usr/ls", {"ls", "-la", NULL}, envp)
+	char *args2[3] = {"grep", "file", NULL};
 
 //esse bloco printa todos os argumentos.
 	int i = 0;
@@ -30,6 +32,7 @@ int main (int argc, char *argv[])
 	if (!data->child_pid[0])
 	{
 	/* 	código para o child1 */
+		//executa_execve_do_filho1(comando_do_execve);
 		printf ("data->child_pid[0] = %d ;\n", data->child_pid[0]);
 		printf ("this is child 1\n");
 		exit(UTIL_NOT_FOUND); //if command is not found, gtfo of the forked process.
