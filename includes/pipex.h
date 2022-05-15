@@ -6,7 +6,7 @@
 /*   By: hmochida <hmochida@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 02:40:02 by hmochida          #+#    #+#             */
-/*   Updated: 2022/05/13 19:09:06 by hmochida         ###   ########.fr       */
+/*   Updated: 2022/05/14 00:05:01 by hmochida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,3 +24,7 @@
 int		create_pipe(int pipe_fd[2]);
 pid_t	create_child(void);
 void	exec_cmd1(char **args1, char *envp[]);
+void	init_data(t_data *data, char *argv[], char *envp[]);
+void	ft_putstr_fd(char *s, int fd);
+int		ft_strlen(const char *s);
+int		check_argc (int argc);

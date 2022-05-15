@@ -15,6 +15,10 @@ SRC_LIST = pipex.c \
 create_child.c \
 create_pipe.c \
 exec_cmdx.c \
+init_data.c \
+ft_strlen.c \
+ft_putstr_fd.c \
+check_argc.c \
 
 # Names sources
 SOURCES = $(addprefix $(SOURCEDIR)/,$(SRC_LIST))
@@ -32,19 +36,19 @@ VAL = valgrind ./$(NAME)
 RUN_ARGS = infile "cmd1.com cmd1.arg1 cmd1.arg2" "cmd2.com cmd2.arg1" outfile
 
 $(NAME): $(OBJS)
-	$(CC) $(CF) $(OBJS) $(INCLUDES) -o $(NAME)
+	@$(CC) $(CF) $(OBJS) $(INCLUDES) -o $(NAME)
 
 objs/%.o: src/%.c
-	mkdir -p objs
-	$(CC) $(CF) $(INCLUDES) -c $< -o $@
+	@mkdir -p objs
+	@$(CC) $(CF) $(INCLUDES) -c $< -o $@
 
 all: $(NAME)
 
 clean:
-	rm -rf objs
+	@rm -rf objs
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
 
@@ -52,7 +56,7 @@ re: fclean all
 bonus:
 
 # from here on shit ain't mandatory or bonus
-run:
+run: all
 	./$(NAME)
 
 git: fclean
