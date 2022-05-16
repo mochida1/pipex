@@ -6,7 +6,7 @@
 /*   By: hmochida <hmochida@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 02:40:02 by hmochida          #+#    #+#             */
-/*   Updated: 2022/05/14 00:05:01 by hmochida         ###   ########.fr       */
+/*   Updated: 2022/05/15 16:35:54 by hmochida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,3 +28,4 @@ void	init_data(t_data *data, char *argv[], char *envp[]);
 void	ft_putstr_fd(char *s, int fd);
 int		ft_strlen(const char *s);
 int		check_argc (int argc);
+char	**ft_split(char *s, char c);

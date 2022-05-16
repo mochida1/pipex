@@ -11,3 +11,9 @@ Worst case scenario input - can't backslash simple quotation marks.
 	echo "this is f'cked up" | tr "'" "\""
 
 ./pipex INFILE "CMD1 cmd1.arg1 cmd1.arg2" "CMD2 cmd2.arg1 'cmd2.arg2 is a string'" OUTFILE
+
+
+
+TRATAMENTO DE ERROS:
+	INFILE não encontrado; -> ????
+	argc != 5; -> printa erro e não roda.
