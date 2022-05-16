@@ -15,5 +15,16 @@ Worst case scenario input - can't backslash simple quotation marks.
 
 
 TRATAMENTO DE ERROS:
-	INFILE não encontrado; -> ????
 	argc != 5; -> printa erro e não roda.
+	INFILE não encontrado; -> segue para cmd2 e printa mensagem de erro:
+			$ cat INVALIDfile | echo aalalal > outfile
+			cat: infole: No such file or directory
+			$ cat outfile
+			aalalal
+	2 erros de input; -> printa erro do cmd1, depois printa erro do cmd2:
+		x$ cat infole | echao aalalal > outfile
+			cat: infole: No such file or directory
+			bash: echao: command not found
+	erro no 2o comando; -> executa o comando 1, repassando o input para cmd2 (que resulta em porra nenhuma), printa erro do cmd2:
+		cat infile | echao aalalal > outfile
+			bash: echao: command not found

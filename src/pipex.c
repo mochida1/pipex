@@ -6,7 +6,7 @@
 /*   By: hmochida <hmochida@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 02:40:10 by hmochida          #+#    #+#             */
-/*   Updated: 2022/05/16 14:53:53 by hmochida         ###   ########.fr       */
+/*   Updated: 2022/05/16 14:55:26 by hmochida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int main (int argc, char *argv[], char *envp[])
 	data = malloc (sizeof(t_data));
 	if (!data)
 		exit(1);
-	init_data(data, argv, envp);
+	init_data(data, argv);
 
 	data->child_pid[0] = create_child();
 	if (!data->child_pid[0])
