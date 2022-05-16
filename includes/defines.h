@@ -6,7 +6,7 @@
 /*   By: hmochida <hmochida@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 02:40:05 by hmochida          #+#    #+#             */
-/*   Updated: 2022/05/15 18:06:40 by hmochida         ###   ########.fr       */
+/*   Updated: 2022/05/16 16:13:47 by hmochida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ typedef struct s_data
 	int		fd[2];
 	int		status;
 	int		*error_msg[2];
-	char	**args; // args[i] -> {"CMDi", "OPTi", "...i"}
+	char	**args;
+	char	**env_ptr;
 } t_data;
 
 /* EXIT STATUS */
