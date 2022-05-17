@@ -6,7 +6,7 @@
 /*   By: hmochida <hmochida@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 02:40:02 by hmochida          #+#    #+#             */
-/*   Updated: 2022/05/16 16:10:12 by hmochida         ###   ########.fr       */
+/*   Updated: 2022/05/16 20:48:46 by hmochida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,3 +29,5 @@ void	ft_putstr_fd(char *s, int fd);
 int		ft_strlen(const char *s);
 int		check_argc (int argc);
 char	**ft_split(char *s, char c);
+char	**get_command(char **args, int index);
+void	get_exec_error(char *path, t_data *data, int process);

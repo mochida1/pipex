@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_path.c                                         :+:      :+:    :+:   */
+/*   exec_error.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmochida <hmochida@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/17 15:09:19 by hmochida          #+#    #+#             */
-/*   Updated: 2022/05/17 15:11:27 by hmochida         ###   ########.fr       */
+/*   Created: 2022/05/16 20:26:14 by hmochida          #+#    #+#             */
+/*   Updated: 2022/05/16 20:41:30 by hmochida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../includes/pipex.h"
 
-char	*get_path(char *cmd_arg, char **envp)
+void	exec_error(char *path, t_data *data, int process)
 {
-	/* aqui vêm os access() */
-	return ("/ls/bin");
+	if (access(path, F_OK))
+		data->error_msg[process] = FILE_NOT_FOUND;
+	else if (access(path, X_OK))
+		data->error_msg[process] = NO_PERMISSION;
 }

@@ -1,5 +1,6 @@
 Actually, don't read me. Using this file to remember some stuff.
 
+gcc me.c ft_split.c ft_strlen.c ../includes/pipex.h && ./a.out
 
 ./pipex "CMD1 cmd1.arg1 'cmd1.arg2 as string'" 'CMD2 cmd2.arg1 "cmd2.arg2 as string"'
 	ARG[0]: >>./pipex<<
@@ -28,3 +29,12 @@ TRATAMENTO DE ERROS:
 	erro no 2o comando; -> executa o comando 1, repassando o input para cmd2 (que resulta em porra nenhuma), printa erro do cmd2:
 		cat infile | echao aalalal > outfile
 			bash: echao: command not found
+	string nula como comando 1; -> ???:
+		./pipex INFILE "" "cmd2 cmd2.arg1 cmd2.arg2" OUTFILE
+		$ | echo > outfile
+			bash: syntax error near unexpected token `|'
+	string nula como comando 2; -> roda comando 2 e nada acontece:
+		./pipex INFILE "cmd1 cmd1.arg1 cmd1.arg2" "" OUTFILE
+		$ cat infile | > outfile
+			$
+

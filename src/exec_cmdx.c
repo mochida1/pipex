@@ -6,7 +6,7 @@
 /*   By: hmochida <hmochida@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:23:30 by hmochida          #+#    #+#             */
-/*   Updated: 2022/05/16 16:21:12 by hmochida         ###   ########.fr       */
+/*   Updated: 2022/05/17 15:44:45 by hmochida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,13 @@ void	exec_cmd1(t_data *data)
 	char *path;
 
 	cmd_args = get_command(data->args, 2); //0_pipex 1_infile 2_cmd1 3_cmd2 4_outfile
-	path = get_path(cmd_args[0]);// "/bin/ls"
+	path = get_path(cmd_args[0], data->env_ptr); // "/bin/ls"
 
-	if (access(path, F_OK))
-	{
-		//data->error_msg[0] = FILE_NOT_FOUND;
-		exit (UTIL_NOT_FOUND);
-	}
-	else if (access(path, X_OK))
-	{
-		//data->error_msg[0] = NO_PERMISSION;
-		exit (CANT_RUN);
-	}
-	if (execve(path, args1, envp))
-		printf("deu bosta no execve\n"); //remover depois
+	close(data->pipe_fd[0]);
+	dup2(STDIN_FD, data->fd[0]);
+	dups(data->pipe_fd[1], STDOUT_FD);
+
+	get_exec_error(path); //aqui deveria testar o path para achar o que o CMD necessita, usando access() para testar todos os elementos de "PATH" em envp e concatenando-os com os nome do comando.
+	if (execve(path, cmd_args, envp))
+		ft_putstr_fd("deu bosta no execve\n", 2);
 }

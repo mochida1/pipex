@@ -6,7 +6,7 @@
 /*   By: hmochida <hmochida@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 02:40:05 by hmochida          #+#    #+#             */
-/*   Updated: 2022/05/16 16:13:47 by hmochida         ###   ########.fr       */
+/*   Updated: 2022/05/17 15:37:10 by hmochida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@ typedef struct s_data
 	char	**args;
 	char	**env_ptr;
 } t_data;
+
+/* MAGIC NUMBERS */
+# define STDIN_FD 0
+# define STDOUT_FD 1
+# define STDERR_FD 2
+
 
 /* EXIT STATUS */
 
