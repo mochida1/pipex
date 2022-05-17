@@ -8,7 +8,7 @@ LIBS = libs
 #VPATH = $(SOURCEDIR)
 
 # headers
-INCLUDES = -Iincludes
+INCLUDES = -I /includes
 
 # Lists sources. Manually because of norm...
 SRC_LIST = pipex.c \
@@ -18,6 +18,7 @@ exec_cmdx.c \
 init_data.c \
 ft_strlen.c \
 ft_putstr_fd.c \
+ft_split.c \
 check_argc.c \
 get_command.c \
 get_path.c \
@@ -36,7 +37,7 @@ GDB = -ggdb
 VAL = valgrind ./$(NAME)
 
 # Arguments to test the program with
-RUN_ARGS = infile "cmd1.com cmd1.arg1 cmd1.arg2" "cmd2.com cmd2.arg1" outfile
+RUN_ARGS = infile "ls -la" "grep file" outfile
 
 $(NAME): $(OBJS)
 	@$(CC) $(CF) $(OBJS) $(INCLUDES) -o $(NAME)

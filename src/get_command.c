@@ -6,13 +6,11 @@
 /*   By: hmochida <hmochida@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 16:25:03 by hmochida          #+#    #+#             */
-/*   Updated: 2022/05/16 17:16:37 by hmochida         ###   ########.fr       */
+/*   Updated: 2022/05/17 16:26:25 by hmochida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../includes/pipex.h"
-
-int count_
 
 char	**get_command(char **args, int index)
 {

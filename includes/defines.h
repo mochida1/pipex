@@ -6,7 +6,7 @@
 /*   By: hmochida <hmochida@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 02:40:05 by hmochida          #+#    #+#             */
-/*   Updated: 2022/05/17 15:37:10 by hmochida         ###   ########.fr       */
+/*   Updated: 2022/05/17 17:07:57 by hmochida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ typedef struct s_data
 	int		pipe_fd[2];
 	int		fd[2];
 	int		status;
-	int		*error_msg[2];
+	int		error_msg[2];
 	char	**args;
 	char	**env_ptr;
 } t_data;
