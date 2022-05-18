@@ -6,7 +6,7 @@
 /*   By: hmochida <hmochida@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 16:33:49 by hmochida          #+#    #+#             */
-/*   Updated: 2022/05/18 12:34:57 by hmochida         ###   ########.fr       */
+/*   Updated: 2022/05/18 14:06:34 by hmochida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,14 +65,40 @@
 	return (0);
 } */
 
-int main (int argc, char *argv[], char *envp[])
+static char **cat_cmd_to_all_paths(char *cmd_arg, char **all_paths)
 {
-	char **all_paths;
-	int i = 0;
+	int		i = 0;
+	int		j = 0;
+	int		k = 0;
+	char	*temp;
 
-	printf("argc: %d\n", argc);
-	printf("argv[0]: %s\n", argv[0]);
+	i = 0;
+	j = 0;
+	k = 0;
+	while (all_paths[i])
+	{
+		temp = malloc (sizeof (char) * (ft_strlen(cmd_arg) + 2 + ft_strlen(all_paths[i])));
+		while (all_paths[i][j])
+		{
+			temp[j] = all_paths[i][j];
+			j++;
+		}
+		temp[j++] = '/';
+		while (cmd_arg[k])
+			temp[j++] = cmd_arg[k++];
+		temp[j] = '\0';
+		j = 0;
+		k = 0;
+		free(all_paths[i]);
+		all_paths[i++] = temp;
+	}
+	return(all_paths);
+}
 
+static int get_path_index_from_envp (char *cmd_arg, char **envp)
+{
+	int i;
+	i = 0;
 	while (envp[i])
 	{
 		if (envp[i][0] == 'P')
@@ -81,14 +107,40 @@ int main (int argc, char *argv[], char *envp[])
 					if (envp[i][3] == 'H')
 						if (envp[i][4] == '=')
 							break;
-		// printf ("%s\n", envp[i]);
 		i++;
 	}
+	if (envp[i])
+		return(i);
+	else
+		return(-1);
+}
+
+int main (int argc, char *argv[], char *envp[])
+{
+	char **all_paths;
+	int i;
+	char *cmd_arg = "ls";
+
+	i = get_path_index_from_envp (cmd_arg, envp);
+	if (1 < 0)
+		{
+			perror("deu bosta pegando o indice do path");
+		}
+	/* test block, aqui para usar as variáveis*/
+	printf("argc: %d\n", argc);
+	printf("argv[0]: %s\n", argv[0]);
+	/* end testblock */
+
+
 	all_paths = ft_split(envp[i] + 5, ':');
+	all_paths = cat_cmd_to_all_paths(cmd_arg, all_paths);
+	//int i, j, k;
+
+
 	i = 0;
 	while (all_paths[i])
 	{
-		printf("%s\n", all_paths[i]);
+		printf("%d >>%s<<\n", i, all_paths[i]);
 		i++;
 	}
 	return (0);
