@@ -6,11 +6,28 @@
 /*   By: hmochida <hmochida@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 15:09:19 by hmochida          #+#    #+#             */
-/*   Updated: 2022/05/18 14:08:28 by hmochida         ###   ########.fr       */
+/*   Updated: 2022/05/18 14:56:43 by hmochida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
+
+static char	*access_all_paths(char **all_paths)
+{
+	int		i;
+
+	i = 0;
+	while (all_paths[i])
+	{
+		if (!access(all_paths[i], F_OK))
+		{
+			if (!access(all_paths[i], X_OK))
+				return (ft_strdup(all_paths[i]));
+		}
+		i++;
+	}
+	return (NULL);
+}
 
 static char	**cat_cmd_to_all_paths(char *cmd_arg, char **all_paths)
 {
@@ -64,11 +81,26 @@ static int get_path_index_from_envp (char **envp)
 
 char	*get_path(char *cmd_arg, char **envp)
 {
-	/* aqui vêm os access() */
-	if (*cmd_arg) //deletar
-		write(1, "do nothing", 0); //deletar
-	else if (envp) //deletar
-		write(1, "do nothing", 0); //deletar
+	char	**all_paths;
+	int		i;
+	char	*path;
 
-	return ("/bin/cat");
+	i = get_path_index_from_envp (envp);
+	if (1 < 0)
+			perror("deu bosta pegando o indice do path");
+	all_paths = ft_split(envp[i] + 5, ':');
+	all_paths = cat_cmd_to_all_paths(cmd_arg, all_paths);
+	path = access_all_paths(all_paths);
+	if (path)
+	{
+		i = 0;
+		while (all_paths[i])
+		{
+			free(all_paths[i]);
+			i++;
+		}
+		free(all_paths);
+		return (path);
+	}
+	return (NULL);
 }

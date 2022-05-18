@@ -6,7 +6,7 @@
 /*   By: hmochida <hmochida@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 16:33:49 by hmochida          #+#    #+#             */
-/*   Updated: 2022/05/18 14:21:33 by hmochida         ###   ########.fr       */
+/*   Updated: 2022/05/18 14:50:13 by hmochida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,23 @@
 	return (0);
 } */
 
+char	*access_all_paths(char **all_paths)
+{
+	int		i;
+
+	i = 0;
+	while (all_paths[i])
+	{
+		if (!access(all_paths[i], F_OK))
+		{
+			if (!access(all_paths[i], X_OK))
+				return (ft_strdup(all_paths[i]));
+		}
+		i++;
+	}
+	return (NULL);
+}
+
 static char **cat_cmd_to_all_paths(char *cmd_arg, char **all_paths)
 {
 	int		i = 0;
@@ -117,32 +134,36 @@ static int get_path_index_from_envp (char **envp)
 
 int main (int argc, char *argv[], char *envp[])
 {
-	char **all_paths;
-	int i;
-	char *cmd_arg = "ls";
-
-	i = get_path_index_from_envp (envp);
-	if (1 < 0)
-			perror("deu bosta pegando o indice do path");
 	/* test block, aqui para usar as variáveis*/
 	printf("argc: %d\n", argc);
 	printf("argv[0]: %s\n", argv[0]);
 	/* end testblock */
 
+	char **all_paths;
+	int i;
+	char *path;
+	char *cmd_arg = "sudo";
+
+	i = get_path_index_from_envp (envp);
+	if (1 < 0)
+			perror("deu bosta pegando o indice do path");
 
 	all_paths = ft_split(envp[i] + 5, ':');
 	all_paths = cat_cmd_to_all_paths(cmd_arg, all_paths);
-	//int i, j, k;
-
-
-	i = 0;
-	while (all_paths[i])
+	path = access_all_paths(all_paths);
+	if (path)
 	{
-		printf("%d >>%s<<\n", i, all_paths[i]);
-		free(all_paths[i]);
-		i++;
+		i = 0;
+		while (all_paths[i])
+		{
+			free(all_paths[i]);
+			i++;
+		}
+		free(all_paths);
+		// return (path);
+		printf (">>%s<<", path);
 	}
-	free(all_paths);
-	return (0);
+
+
 }
 

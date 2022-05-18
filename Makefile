@@ -18,6 +18,7 @@ exec_cmdx.c \
 init_data.c \
 ft_strlen.c \
 ft_putstr_fd.c \
+ft_strdup.c \
 ft_split.c \
 check_argc.c \
 get_command.c \

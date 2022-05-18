@@ -6,7 +6,7 @@
 /*   By: hmochida <hmochida@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 02:40:02 by hmochida          #+#    #+#             */
-/*   Updated: 2022/05/17 16:12:18 by hmochida         ###   ########.fr       */
+/*   Updated: 2022/05/18 14:45:04 by hmochida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,3 +34,4 @@ char	**get_command(char **args, int index);
 char	*get_path(char *cmd_arg, char **envp);
 void	get_exec_error(char *path, t_data *data, int process);
 void	free_some_pointers(char **cmd_args, char *path);
+char	*ft_strdup(const char *s1);

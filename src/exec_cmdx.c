@@ -6,7 +6,7 @@
 /*   By: hmochida <hmochida@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:23:30 by hmochida          #+#    #+#             */
-/*   Updated: 2022/05/17 19:53:29 by hmochida         ###   ########.fr       */
+/*   Updated: 2022/05/18 14:49:17 by hmochida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,11 @@ void	exec_cmd1(t_data *data)
 void	exec_cmd2(t_data *data)
 {
 	char **cmd_args;
-	char *path = "/usr/bin/tr";
+	char *path;
 	close(data->pipe_fd[1]);
 
 	cmd_args = get_command(data->args, 3);
-	//path = get_path(cmd_args[0], data->env_ptr);
+	path = get_path(cmd_args[0], data->env_ptr);
 
 
 	dup2(data->pipe_fd[0], STDIN_FD);
