@@ -6,7 +6,7 @@
 /*   By: hmochida <hmochida@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 15:09:19 by hmochida          #+#    #+#             */
-/*   Updated: 2022/05/18 14:06:37 by hmochida         ###   ########.fr       */
+/*   Updated: 2022/05/18 14:08:28 by hmochida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static char	**cat_cmd_to_all_paths(char *cmd_arg, char **all_paths)
 	return(all_paths);
 }
 
-static int get_path_index_from_envp (char *cmd_arg, char **envp)
+static int get_path_index_from_envp (char **envp)
 {
 	int i;
 	i = 0;

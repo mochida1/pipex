@@ -6,7 +6,7 @@
 /*   By: hmochida <hmochida@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 16:33:49 by hmochida          #+#    #+#             */
-/*   Updated: 2022/05/18 14:06:34 by hmochida         ###   ########.fr       */
+/*   Updated: 2022/05/18 14:21:33 by hmochida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ static char **cat_cmd_to_all_paths(char *cmd_arg, char **all_paths)
 	return(all_paths);
 }
 
-static int get_path_index_from_envp (char *cmd_arg, char **envp)
+static int get_path_index_from_envp (char **envp)
 {
 	int i;
 	i = 0;
@@ -121,11 +121,9 @@ int main (int argc, char *argv[], char *envp[])
 	int i;
 	char *cmd_arg = "ls";
 
-	i = get_path_index_from_envp (cmd_arg, envp);
+	i = get_path_index_from_envp (envp);
 	if (1 < 0)
-		{
 			perror("deu bosta pegando o indice do path");
-		}
 	/* test block, aqui para usar as variáveis*/
 	printf("argc: %d\n", argc);
 	printf("argv[0]: %s\n", argv[0]);
@@ -141,8 +139,10 @@ int main (int argc, char *argv[], char *envp[])
 	while (all_paths[i])
 	{
 		printf("%d >>%s<<\n", i, all_paths[i]);
+		free(all_paths[i]);
 		i++;
 	}
+	free(all_paths);
 	return (0);
 }
 
