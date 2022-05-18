@@ -6,7 +6,7 @@
 /*   By: hmochida <hmochida@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 02:40:05 by hmochida          #+#    #+#             */
-/*   Updated: 2022/05/17 17:07:57 by hmochida         ###   ########.fr       */
+/*   Updated: 2022/05/17 20:11:29 by hmochida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_data
 } t_data;
 
 /* MAGIC NUMBERS */
+
 # define STDIN_FD 0
 # define STDOUT_FD 1
 # define STDERR_FD 2
