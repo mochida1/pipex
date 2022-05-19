@@ -1,18 +1,71 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_path.c                                         :+:      :+:    :+:   */
+/*   me.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmochida <hmochida@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/17 15:09:19 by hmochida          #+#    #+#             */
-/*   Updated: 2022/05/18 15:00:43 by hmochida         ###   ########.fr       */
+/*   Created: 2022/05/15 16:33:49 by hmochida          #+#    #+#             */
+/*   Updated: 2022/05/18 14:50:13 by hmochida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/pipex.h"
+# include "../includes/pipex.h"
 
-static char	*access_all_paths(char **all_paths)
+/* teste defuncionamento basico do pipe */
+/* int main (int argc, char *argv[])
+{
+	int pipefd[2];
+	char str[7];
+	pipe(pipefd);
+
+	if (!fork())
+	{
+		dup2(pipefd[1], 1);
+		write (1, "HELLO\n", 6);
+		close (pipefd[1]);
+		return (0);
+	}
+
+	str[6] = '\0';
+	read(pipefd[0], str, 6);
+	printf ("%s", str);
+} */
+
+/* teste split */
+/* int main (void)
+{
+	char *input = "cmd1 cu'string foda'";
+	char **output = ft_split(input, ' ');
+	int i = 0;
+	while (output[i])
+	{
+		printf ("%s\n", output[i]);
+		i++;
+	}
+	return (0);
+} */
+
+/* teste de funcionalidade do access */
+/* int main (void)
+{
+	char *path = "teste";
+
+	if (access(path, F_OK))
+	{
+		write (2, "F_OK\n", 5);
+		exit (UTIL_NOT_FOUND);
+	}
+	else if (access(path, X_OK))
+	{
+		write (2, "X_OK\n", 5);
+		exit (CANT_RUN);
+	}
+	else write (1, "ok\n", 3);
+	return (0);
+} */
+
+char	*access_all_paths(char **all_paths)
 {
 	int		i;
 
@@ -29,7 +82,7 @@ static char	*access_all_paths(char **all_paths)
 	return (NULL);
 }
 
-static char	**cat_cmd_to_all_paths(char *cmd_arg, char **all_paths)
+static char **cat_cmd_to_all_paths(char *cmd_arg, char **all_paths)
 {
 	int		i = 0;
 	int		j = 0;
@@ -79,15 +132,22 @@ static int get_path_index_from_envp (char **envp)
 		return(-1);
 }
 
-char	*get_path(char *cmd_arg, char **envp)
+int main (int argc, char *argv[], char *envp[])
 {
-	char	**all_paths;
-	int		i;
-	char	*path;
+	/* test block, aqui para usar as variáveis*/
+	printf("argc: %d\n", argc);
+	printf("argv[0]: %s\n", argv[0]);
+	/* end testblock */
+
+	char **all_paths;
+	int i;
+	char *path;
+	char *cmd_arg = "sudo";
 
 	i = get_path_index_from_envp (envp);
 	if (1 < 0)
 			perror("deu bosta pegando o indice do path");
+
 	all_paths = ft_split(envp[i] + 5, ':');
 	all_paths = cat_cmd_to_all_paths(cmd_arg, all_paths);
 	path = access_all_paths(all_paths);
@@ -100,7 +160,10 @@ char	*get_path(char *cmd_arg, char **envp)
 			i++;
 		}
 		free(all_paths);
-		return (path);
+		// return (path);
+		printf (">>%s<<", path);
 	}
-	return (NULL);
+
+
 }
+
