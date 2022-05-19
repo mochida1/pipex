@@ -6,7 +6,7 @@
 /*   By: hmochida <hmochida@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:23:30 by hmochida          #+#    #+#             */
-/*   Updated: 2022/05/18 14:49:17 by hmochida         ###   ########.fr       */
+/*   Updated: 2022/05/18 21:49:11 by hmochida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	exec_cmd1(t_data *data)
 	char *path;
 
 	cmd_args = get_command(data->args, 2); //0_pipex 1_infile 2_cmd1 3_cmd2 4_outfile //precisa de parsing interno.
-	path = get_path(cmd_args[0], data->env_ptr); // "/bin/ls"
+	path = get_path(cmd_args[0], data->env_ptr);
 
 	close(data->pipe_fd[0]);
 	dup2(data->fd[0], STDIN_FD);
