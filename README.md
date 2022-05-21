@@ -1,6 +1,19 @@
 Actually, don't read me. Using this file to remember some stuff.
 
-gcc me.c ft_split.c ft_strlen.c ../includes/pipex.h && ./a.out
+gcc me.c ../includes/pipex.h && ./a.out
+
+parsing rules:
+	split on [space] unless it is encapsulated between 2 of the same quotation marks:
+	ie: a b "_ c _" -> {a}, {b}, {_ c _};
+		a b '_ c _' -> {a}, {b}, {_ c _};
+	if any number of quotation marks are found inside 2 different quotation marks, tey are disregarded as being special characters:
+	ie:	" 1' 1' 1' 1' 1' " -> { 1' 1' 1' 1' 1' }
+	any escaped quotation inside a pair of the same type is not considered a special character:
+	ie: "and thus he said: \"'sup\"" -> {and thus he said: "'sup"}
+	exclamation marks need to be escaped AND have their backslash removed after:
+	ie : " :\"sup'!\" " -> -bash: !\: event not found
+		 " :\"sup'\!\" " -> >> : {sup'\!" }
+		 this somehow only occurs for !
 
 ./pipex "CMD1 cmd1.arg1 'cmd1.arg2 as string'" 'CMD2 cmd2.arg1 "cmd2.arg2 as string"'
 	ARG[0]: >>./pipex<<
