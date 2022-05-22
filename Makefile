@@ -64,8 +64,7 @@ bonus:
 run: all
 	./$(NAME)
 
-git:
-	fclean
+git: fclean
 	git add -A
 	git commit -m "make git"
 	git push
