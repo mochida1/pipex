@@ -32,9 +32,12 @@ shell rules:
 
 last case is \[space].
 ./pipex "cmd1 case0 \"case 1\" 'case 1.1' case\" 2\" case' 2.2' case\ 3 'case\ 4' 'case 5''now 5.1'\"this is 5.2\" '\"case 6\' \\'case 7\' \\\"case 8\\\" 'case9\!' \ "
-{{cmd1}, {case0}, {"case 1"}, {'case 1.1'}, {case" 2"}, {case' 2.2'}, {case\ 3}, {'case\ 4'}, {'case 5''now 5.1'"this is 5.2"}, {'"case 6\'}, {\'case7\'}, {\"case8\"}, {case9\!}}
+ARGV[cmd1] = {cmd1 case0 "case 1" 'case 1.1' case" 2" case' 2.2' case\ 3 'case\ 4' 'case 5''now 5.1'"this is 5.2" '"case 6\' \'case 7\' \"case 8\" 'case9\!' \};
+{{cmd1}, {case0}, {"case 1"}, {'case 1.1'}, {case" 2"}, {case' 2.2'}, {case\ 3}, {'case\ 4'}, {'case 5''now 5.1'"this is 5.2"}, {'"case 6\'}, {\'case7\'}, {\"case8\"}, {case9\!}};
 
-'cmd1 case0 "case 1" case" 2" case\ 3 "case 5""now 5.1" \"case 6\" \\"case 7\\" \\\'case 8\\\' "case9\!" \ '
+./pipex 'cmd2 case0 "case 1" case" 2" case\ 3 "case 5""now 5.1" \"case 6\" \\"case 7\\" \\\"case 8\\\" "case9\!" \ '
+ARGV[cmd2] = {cmd2 case0 "case 1" case" 2" case\ 3 "case 5""now 5.1" \"case 6\" \\"case 7\\" \\\"case 8\\\" "case9\!" \};
+EXECVE = {{cmd2}, {case0}, {"case 1"}, {case" 2"}, {case\ 3}, {"case 5""now 5.1"}, {\"case 6\"}, {\\"case 7\\"}, {\\\"case 8\\\"}, {"case9\!"}, {\}};
 
 splitting to execve arguments:
 
