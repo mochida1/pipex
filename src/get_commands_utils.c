@@ -6,7 +6,7 @@
 /*   By: hmochida <hmochida@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 12:33:27 by hmochida          #+#    #+#             */
-/*   Updated: 2022/05/24 16:40:26 by hmochida         ###   ########.fr       */
+/*   Updated: 2022/05/24 17:01:56 by hmochida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ char	*make_splitting_easier(char *args)
 
 	i = 0;
 	quote_type = 0;
+	flag = 0;
 	while (args[i])
 	{
 		if ((args[i] == '"' || args[i] == '"') && !flag)
