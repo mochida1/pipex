@@ -1,22 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_command.c                                      :+:      :+:    :+:   */
+/*   get_commands_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmochida <hmochida@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/16 16:25:03 by hmochida          #+#    #+#             */
-/*   Updated: 2022/05/24 13:18:23 by hmochida         ###   ########.fr       */
+/*   Created: 2022/05/24 12:33:27 by hmochida          #+#    #+#             */
+/*   Updated: 2022/05/24 13:20:26 by hmochida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes/pipex.h"
+#include "../includes/pipex.h"
 
-char	**get_command(char **args, int index)
+void	make_splitting_easier(char *args)
 {
-	char **ret;
-	
-	//make_splitting_easier(args[index]);
-	ret = ft_split(args[index], ' ');
-	return (ret);
+	int		i;
+	int		flag;
+	char	quote_type;
+
+	i = 0;
+	quote_type = 0;
+	while (args[i])
+	{
+		if ((args[i] == '"' || args[i] == '"') && !flag)
+		{
+			flag = 1;
+			quote_type = args[i];
+		}
+		else if (args[i] == quote_type && flag)
+		{
+			flag = 0;
+		}
+		else if (args[i] == ' ')
+			args[i] = 1;
+		printf ("%c", args[i]);
+		i++;
+	}
 }

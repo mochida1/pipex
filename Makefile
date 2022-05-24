@@ -24,6 +24,7 @@ check_argc.c \
 get_command.c \
 get_path.c \
 get_exec_error.c \
+get_commands_utils.c \
 
 # Names sources
 SOURCES = $(addprefix $(SOURCEDIR)/,$(SRC_LIST))
