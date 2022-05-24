@@ -6,13 +6,13 @@
 /*   By: hmochida <hmochida@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 12:33:27 by hmochida          #+#    #+#             */
-/*   Updated: 2022/05/24 13:20:26 by hmochida         ###   ########.fr       */
+/*   Updated: 2022/05/24 16:40:26 by hmochida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
-void	make_splitting_easier(char *args)
+char	*make_splitting_easier(char *args)
 {
 	int		i;
 	int		flag;
@@ -31,9 +31,14 @@ void	make_splitting_easier(char *args)
 		{
 			flag = 0;
 		}
-		else if (args[i] == ' ')
+		else if (args[i] == ' ' && flag)
 			args[i] = 1;
-		printf ("%c", args[i]);
 		i++;
 	}
+	return (args);
 }
+
+// char	*unmake_splitting_easier(char *args)
+// {
+// 	args[i]
+// }
