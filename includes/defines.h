@@ -6,7 +6,7 @@
 /*   By: hmochida <hmochida@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 02:40:05 by hmochida          #+#    #+#             */
-/*   Updated: 2022/05/17 20:11:29 by hmochida         ###   ########.fr       */
+/*   Updated: 2022/05/24 20:14:01 by hmochida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,7 @@ typedef struct s_data
 
 /* EXIT STATUS */
 
+# define GENERAL_ERROR 1
+# define BAD_BASH 2
 # define CANT_RUN 126
 # define UTIL_NOT_FOUND 127
-
-/* ERRORS */
-
-# define FILE_NOT_FOUND 1
-# define NO_PERMISSION 2

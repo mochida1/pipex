@@ -6,7 +6,7 @@
 /*   By: hmochida <hmochida@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:23:30 by hmochida          #+#    #+#             */
-/*   Updated: 2022/05/18 21:49:11 by hmochida         ###   ########.fr       */
+/*   Updated: 2022/05/24 20:19:14 by hmochida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ void	exec_cmd1(t_data *data)
 	dup2(data->fd[0], STDIN_FD);
 	dup2(data->pipe_fd[1], STDOUT_FD);
 
-	get_exec_error(path, data, 0); //aqui deveria testar o path para achar o que o CMD necessita, usando access() para testar todos os elementos de "PATH" em envp e concatenando-os com os nome do comando.
-
-	execve(path, cmd_args, data->env_ptr);
-	ft_putstr_fd("deu bosta no execve\n", 2); // traduzir
+	 //aqui deveria testar o path para achar o que o CMD necessita, usando access() para testar todos os elementos de "PATH" em envp e concatenando-os com os nome do comando.
+	if (!get_exec_error(path, data, 0))
+		execve(path, cmd_args, data->env_ptr);
+	ft_putstr_fd("deu bosta no execve\n", 2); // criar função para exibir o erro correto;
 	free_some_pointers(cmd_args, path);
 	exit(127);
 }
@@ -60,8 +60,8 @@ void	exec_cmd2(t_data *data)
 	dup2(data->pipe_fd[0], STDIN_FD);
 	dup2(data->fd[1], STDOUT_FD);
 
-	get_exec_error(path, data, 1);
-	execve(path, cmd_args, data->env_ptr);
+	if (!get_exec_error(path, data, 1))
+		execve(path, cmd_args, data->env_ptr);
 	ft_putstr_fd("deu bosta no execve2\n", 2); //traduzir
 	free_some_pointers(cmd_args, path);
 	exit(127);
