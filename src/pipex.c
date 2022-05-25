@@ -6,7 +6,7 @@
 /*   By: hmochida <hmochida@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 02:40:10 by hmochida          #+#    #+#             */
-/*   Updated: 2022/05/25 14:52:03 by hmochida         ###   ########.fr       */
+/*   Updated: 2022/05/25 15:01:41 by hmochida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@ int	main(int argc, char *argv[], char *envp[])
 	waitpid(data->child_pid[1], &data->status, 0);
 	close(data->fd[1]);
 	close(data->pipe_fd[0]);
+	free(data);
 	return (0);
 }
