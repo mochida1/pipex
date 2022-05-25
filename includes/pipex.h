@@ -6,9 +6,12 @@
 /*   By: hmochida <hmochida@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 02:40:02 by hmochida          #+#    #+#             */
-/*   Updated: 2022/05/25 15:08:49 by hmochida         ###   ########.fr       */
+/*   Updated: 2022/05/25 15:19:16 by hmochida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef PIPEX_H
+# define PIPEX_H
 
 # include <unistd.h> // pipe(), exceve(), dup(), dup2(), access(), fork(), unlink()
 # include <fcntl.h> // open(), close(),
@@ -38,3 +41,5 @@ char	*ft_strdup(const char *s1);
 char	*make_splitting_easier(char *args);
 char	**unmake_splitting_easier(char **ret);
 void	print_error(int *error_msg, int process);
+
+#endif
