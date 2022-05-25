@@ -6,11 +6,21 @@
 /*   By: hmochida <hmochida@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 15:09:19 by hmochida          #+#    #+#             */
-/*   Updated: 2022/05/25 14:50:31 by hmochida         ###   ########.fr       */
+/*   Updated: 2022/05/25 15:13:52 by hmochida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
+
+static void	free_all_paths(char **all_paths)
+{
+	int	i;
+
+	i = 0;
+	while (all_paths[i])
+		free(all_paths[i++]);
+	free(all_paths);
+}
 
 static char	*access_all_paths(char **all_paths)
 {
@@ -102,5 +112,6 @@ char	*get_path(char *cmd_arg, char **envp)
 		free(all_paths);
 		return (path);
 	}
+	free_all_paths(all_paths);
 	return (NULL);
 }
