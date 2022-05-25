@@ -92,3 +92,5 @@ Exit codes;
 128+n - Fatal error signal “n”
 130 - Script terminated by Control-C.
 255\* - Exit status out of range.
+
+valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all --trace-children=yes ./pipex infile "caat -e" 'tr a "' outfile && cat outfile

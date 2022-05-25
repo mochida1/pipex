@@ -6,7 +6,7 @@
 /*   By: hmochida <hmochida@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 15:09:19 by hmochida          #+#    #+#             */
-/*   Updated: 2022/05/25 15:13:52 by hmochida         ###   ########.fr       */
+/*   Updated: 2022/05/25 15:50:53 by hmochida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,5 +113,6 @@ char	*get_path(char *cmd_arg, char **envp)
 		return (path);
 	}
 	free_all_paths(all_paths);
+	free(path);
 	return (NULL);
 }
