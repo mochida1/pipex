@@ -6,7 +6,7 @@
 /*   By: hmochida <hmochida@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 02:40:02 by hmochida          #+#    #+#             */
-/*   Updated: 2022/05/24 20:00:17 by hmochida         ###   ########.fr       */
+/*   Updated: 2022/05/24 20:51:07 by hmochida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,3 +37,4 @@ void	free_some_pointers(char **cmd_args, char *path);
 char	*ft_strdup(const char *s1);
 char	*make_splitting_easier(char *args);
 char	**unmake_splitting_easier(char **ret);
+void	print_error(int *error_msg, int process);

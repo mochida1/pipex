@@ -6,7 +6,7 @@
 /*   By: hmochida <hmochida@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 18:23:30 by hmochida          #+#    #+#             */
-/*   Updated: 2022/05/24 20:19:14 by hmochida         ###   ########.fr       */
+/*   Updated: 2022/05/24 20:50:21 by hmochida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ void	exec_cmd1(t_data *data)
 	 //aqui deveria testar o path para achar o que o CMD necessita, usando access() para testar todos os elementos de "PATH" em envp e concatenando-os com os nome do comando.
 	if (!get_exec_error(path, data, 0))
 		execve(path, cmd_args, data->env_ptr);
-	ft_putstr_fd("deu bosta no execve\n", 2); // criar função para exibir o erro correto;
+	print_error(data->error_msg, 0);
 	free_some_pointers(cmd_args, path);
-	exit(127);
+	exit(data->error_msg[0]);
 }
 
 void	exec_cmd2(t_data *data)
@@ -64,5 +64,5 @@ void	exec_cmd2(t_data *data)
 		execve(path, cmd_args, data->env_ptr);
 	ft_putstr_fd("deu bosta no execve2\n", 2); //traduzir
 	free_some_pointers(cmd_args, path);
-	exit(127);
+	exit(data->error_msg[1]);
 }
