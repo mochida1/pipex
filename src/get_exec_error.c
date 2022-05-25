@@ -6,11 +6,11 @@
 /*   By: hmochida <hmochida@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 20:26:14 by hmochida          #+#    #+#             */
-/*   Updated: 2022/05/24 20:22:39 by hmochida         ###   ########.fr       */
+/*   Updated: 2022/05/25 14:28:49 by hmochida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes/pipex.h"
+#include "../includes/pipex.h"
 
 int	get_exec_error(char *path, t_data *data, int process)
 {

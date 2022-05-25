@@ -6,7 +6,7 @@
 /*   By: hmochida <hmochida@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 15:09:19 by hmochida          #+#    #+#             */
-/*   Updated: 2022/05/18 15:00:43 by hmochida         ###   ########.fr       */
+/*   Updated: 2022/05/25 14:50:31 by hmochida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,37 +31,37 @@ static char	*access_all_paths(char **all_paths)
 
 static char	**cat_cmd_to_all_paths(char *cmd_arg, char **all_paths)
 {
-	int		i = 0;
-	int		j = 0;
-	int		k = 0;
+	int		i[3];
 	char	*temp;
 
-	i = 0;
-	j = 0;
-	k = 0;
-	while (all_paths[i])
+	i[0] = 0;
+	i[1] = 0;
+	i[2] = 0;
+	while (all_paths[i[0]])
 	{
-		temp = malloc (sizeof (char) * (ft_strlen(cmd_arg) + 2 + ft_strlen(all_paths[i])));
-		while (all_paths[i][j])
+		temp = malloc (sizeof (char) * (ft_strlen(cmd_arg)
+					+ 2 + ft_strlen(all_paths[i[0]])));
+		while (all_paths[i[0]][i[1]])
 		{
-			temp[j] = all_paths[i][j];
-			j++;
+			temp[i[1]] = all_paths[i[0]][i[1]];
+			i[1]++;
 		}
-		temp[j++] = '/';
-		while (cmd_arg[k])
-			temp[j++] = cmd_arg[k++];
-		temp[j] = '\0';
-		j = 0;
-		k = 0;
-		free(all_paths[i]);
-		all_paths[i++] = temp;
+		temp[i[1]++] = '/';
+		while (cmd_arg[i[2]])
+			temp[i[1]++] = cmd_arg[i[2]++];
+		temp[i[1]] = '\0';
+		i[1] = 0;
+		i[2] = 0;
+		free(all_paths[i[0]]);
+		all_paths[i[0]++] = temp;
 	}
-	return(all_paths);
+	return (all_paths);
 }
 
-static int get_path_index_from_envp (char **envp)
+static int	get_path_index_from_envp(char **envp)
 {
-	int i;
+	int	i;
+
 	i = 0;
 	while (envp[i])
 	{
@@ -70,13 +70,13 @@ static int get_path_index_from_envp (char **envp)
 				if (envp[i][2] == 'T')
 					if (envp[i][3] == 'H')
 						if (envp[i][4] == '=')
-							break;
+							break ;
 		i++;
 	}
 	if (envp[i])
-		return(i);
+		return (i);
 	else
-		return(-1);
+		return (-1);
 }
 
 char	*get_path(char *cmd_arg, char **envp)
@@ -87,7 +87,7 @@ char	*get_path(char *cmd_arg, char **envp)
 
 	i = get_path_index_from_envp (envp);
 	if (1 < 0)
-			perror("deu bosta pegando o indice do path");
+		perror("Error getting pah index from ENVP");
 	all_paths = ft_split(envp[i] + 5, ':');
 	all_paths = cat_cmd_to_all_paths(cmd_arg, all_paths);
 	path = access_all_paths(all_paths);

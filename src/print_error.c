@@ -6,7 +6,7 @@
 /*   By: hmochida <hmochida@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 20:37:43 by hmochida          #+#    #+#             */
-/*   Updated: 2022/05/24 21:03:57 by hmochida         ###   ########.fr       */
+/*   Updated: 2022/05/25 14:29:44 by hmochida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,3 @@ void	print_error(int *error_msg, int process)
 	else
 		ft_putstr_fd("Something really wrong happened.\n", 2);
 }
-
-
-
-// # define GENERAL_ERROR 1
-// # define BAD_BASH 2
-// # 
-// # define CANT_RUN 126
-// # define UTIL_NOT_FOUND 127
