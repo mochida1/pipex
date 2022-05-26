@@ -93,4 +93,4 @@ Exit codes;
 130 - Script terminated by Control-C.
 255\* - Exit status out of range.
 
-valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all --trace-children=yes ./pipex infile "caat -e" 'tr a "' outfile && cat outfile
+valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all --trace-children=yes ./pipex infile "cat -e" "tr ' 42' ' ft'" outfile && cat outfile

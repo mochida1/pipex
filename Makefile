@@ -66,6 +66,9 @@ bonus:
 run: all
 	./$(NAME)
 
+make teste:
+	cat -e infile | trq a b > outfile
+
 git: fclean
 	git add -A
 	git commit -m "make git"
