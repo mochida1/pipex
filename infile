@@ -5,5 +5,5 @@ diamante
 "!'   !"
 >''''''<
 pipe do capiroto
-cat -E INFILE | tr "'" '\"'
+cat -E INFILE | tr "'" '"'
 hi 42 ---> hi ft

@@ -2,8 +2,8 @@ abobora$
 batata$
 couve$
 diamante$
-"!'   !"$
+ !'   ! $
 >''''''<$
 pipe do capiroto$
-cat -E INFILE | tr "'" '\"'$
-hi ft ---> hi ft$
+cat -E INFILE | tr  '  ' '$
+hi 42 ---> hi ft$

@@ -6,7 +6,7 @@
 /*   By: hmochida <hmochida@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 02:40:05 by hmochida          #+#    #+#             */
-/*   Updated: 2022/05/25 15:23:19 by hmochida         ###   ########.fr       */
+/*   Updated: 2022/05/25 22:54:22 by hmochida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ typedef struct s_data
 	pid_t	child_pid[2];
 	int		pipe_fd[2];
 	int		fd[2];
-	int		status;
+	int		pid_status;
 	int		error_msg[2];
 	char	**args;
 	char	**env_ptr;
